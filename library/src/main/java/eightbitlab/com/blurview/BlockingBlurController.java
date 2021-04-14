@@ -48,6 +48,7 @@ final class BlockingBlurController implements BlurController {
     private final int[] blurViewLocation = new int[2];
     private final SizeScaler sizeScaler = new SizeScaler(DEFAULT_SCALE_FACTOR);
     private float scaleFactor = 1f;
+    private int cornerRadius = 0;
 
     private final ViewTreeObserver.OnPreDrawListener drawListener = new ViewTreeObserver.OnPreDrawListener() {
         @Override
@@ -169,7 +170,7 @@ final class BlockingBlurController implements BlurController {
 
         canvas.save();
         canvas.scale(scaleFactor, scaleFactor);
-        canvas.drawBitmap(getRoundedCornerBitmap(internalBitmap, 30), 0, 0, paint);
+        canvas.drawBitmap(getRoundedCornerBitmap(internalBitmap, this.cornerRadius), 0, 0, paint);
         canvas.restore();
 
         if (overlayColor != TRANSPARENT) {
@@ -246,6 +247,12 @@ final class BlockingBlurController implements BlurController {
             this.overlayColor = overlayColor;
             blurView.invalidate();
         }
+        return this;
+    }
+
+    @Override
+    public BlurViewFacade setBlurCornerRadius(int cornerPixel) {
+        this.cornerRadius = cornerPixel;
         return this;
     }
 

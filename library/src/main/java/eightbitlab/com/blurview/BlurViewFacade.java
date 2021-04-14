@@ -61,4 +61,6 @@ public interface BlurViewFacade {
      * @return {@link BlurViewFacade}
      */
     BlurViewFacade setOverlayColor(@ColorInt int overlayColor);
+
+    BlurViewFacade setBlurCornerRadius(int cornerPixel);
 }
