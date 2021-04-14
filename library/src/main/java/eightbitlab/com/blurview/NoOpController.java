@@ -35,6 +35,11 @@ class NoOpController implements BlurController {
     }
 
     @Override
+    public BlurViewFacade setBlurCornerRadius(int cornerPixel) {
+        return this;
+    }
+
+    @Override
     public BlurViewFacade setFrameClearDrawable(@Nullable Drawable windowBackground) {
         return this;
     }
